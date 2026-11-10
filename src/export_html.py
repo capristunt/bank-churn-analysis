@@ -16,13 +16,13 @@ OUTPUT = DEST / 'bank-churn.html'
 LEGACY_EXPORTS = ('index.html', '01-data-cleaning.html', '02-data-analysis.html',
                   '03-prediction.html', '04-business-insights.html')
 SECTIONS = [
-    ('decision', 'The decision in brief', 'Decision'),
-    ('audit', '1. A usable dataset', 'Data audit'),
-    ('segments', '2. Training patterns', 'Customer patterns'),
-    ('models', '3. A model selected', 'Models'),
-    ('targeting', '4. Compare targeting', 'Targeting'),
-    ('economics', '5. Economic scenarios', 'Economic scenarios'),
-    ('pilot', '6. Turn the uncertainty', 'Controlled pilot'),
+    ('problem', '1. The business problem', 'Business problem'),
+    ('data', '2. The data', 'Data'),
+    ('patterns', '3. What the customer base looks like', 'Customer patterns'),
+    ('model', '4. The model, in plain language', 'Model'),
+    ('decision', '5. From probability to decision', 'Targeting and economics'),
+    ('actions', '6. What a retention team should do differently', 'Recommendations'),
+    ('limits', '7. Limits and next steps', 'Limits and pilot'),
     ('evidence', 'Evidence and reproducibility', 'Evidence'),
 ]
 CSS = '''
@@ -107,7 +107,7 @@ def verify(html):
             for row in csv.DictReader(source):
                 identifier = row.get('CustomerId', '')
                 assert not identifier or identifier not in text, 'Individual data found in report'
-    for value in ['248', '407', '62%', '60.9%', '3.05', '0.857', '0.685', '€20,800', '€4,000']:
+    for value in ['248', '407', '62%', '60.9%', '3.05', '0.857', '0.685', 'US$20,800', 'US$4,000']:
         assert value in text, f'Missing expected summary result: {value}'
     return final
 
