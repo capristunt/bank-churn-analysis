@@ -1,0 +1,71 @@
+{
+  "seed": 42,
+  "data_sha256": "e2743748b8f99067c99cb459c10e991936770b48bf6493f70408aafb02b835cd",
+  "raw_sha256": "3996cd1fa372e0db0cd9c0ebac35bbd4e8e3c65fb942bb010c826e7b1eeef0a0",
+  "split_sha256": "01e9ee41137f5d6e3f6f79805cd2cae02f4b90cd6d52459d950bd451671c48d2",
+  "pretest_code_sha256": "f97d1b7746ae71294057eb97159d1d70750e7d40a067397c15c8573bb583f924",
+  "features": [
+    "CreditScore",
+    "Age",
+    "Tenure",
+    "Balance",
+    "EstimatedSalary",
+    "Geography",
+    "NumOfProducts",
+    "HasCrCard",
+    "IsActiveMember"
+  ],
+  "selected_model": "Forêt sigmoid",
+  "models": {
+    "Naïf": "Pipeline(steps=[('pre',\n                 ColumnTransformer(transformers=[('num',\n                                                  Pipeline(steps=[('impute',\n                                                                   SimpleImputer(strategy='median')),\n                                                                  ('scale',\n                                                                   StandardScaler())]),\n                                                  ['CreditScore', 'Age',\n                                                   'Tenure', 'Balance',\n                                                   'EstimatedSalary']),\n                                                 ('cat',\n                                                  Pipeline(steps=[('impute',\n                                                                   SimpleImputer(strategy='most_frequent')),\n                                                                  ('encode',\n                                                                   OneHotEncoder(handle_unknown='ignore',\n                                                                                 sparse_output=False))]),\n                                                  ['Geography', 'NumOfProducts',\n                                                   'HasCrCard',\n                                                   'IsActiveMember'])])),\n                ('model', DummyClassifier())])",
+    "Logistique": "Pipeline(steps=[('pre',\n                 ColumnTransformer(transformers=[('num',\n                                                  Pipeline(steps=[('impute',\n                                                                   SimpleImputer(strategy='median')),\n                                                                  ('scale',\n                                                                   StandardScaler())]),\n                                                  ['CreditScore', 'Age',\n                                                   'Tenure', 'Balance',\n                                                   'EstimatedSalary']),\n                                                 ('cat',\n                                                  Pipeline(steps=[('impute',\n                                                                   SimpleImputer(strategy='most_frequent')),\n                                                                  ('encode',\n                                                                   OneHotEncoder(handle_unknown='ignore',\n                                                                                 sparse_output=False))]),\n                                                  ['Geography', 'NumOfProducts',\n                                                   'HasCrCard',\n                                                   'IsActiveMember'])])),\n                ('model',\n                 LogisticRegression(C=1, max_iter=2000, random_state=42))])",
+    "Forêt": "Pipeline(steps=[('pre',\n                 ColumnTransformer(transformers=[('num',\n                                                  Pipeline(steps=[('impute',\n                                                                   SimpleImputer(strategy='median')),\n                                                                  ('scale',\n                                                                   StandardScaler())]),\n                                                  ['CreditScore', 'Age',\n                                                   'Tenure', 'Balance',\n                                                   'EstimatedSalary']),\n                                                 ('cat',\n                                                  Pipeline(steps=[('impute',\n                                                                   SimpleImputer(strategy='most_frequent')),\n                                                                  ('encode',\n                                                                   OneHotEncoder(handle_unknown='ignore',\n                                                                                 sparse_output=False))]),\n                                                  ['Geography', 'NumOfProducts',\n                                                   'HasCrCard',\n                                                   'IsActiveMember'])])),\n                ('model',\n                 RandomForestClassifier(max_depth=10, min_samples_leaf=10,\n                                        n_estimators=300, n_jobs=1,\n                                        random_state=42))])",
+    "Forêt sigmoid": "CalibratedClassifierCV(cv=StratifiedKFold(n_splits=5, random_state=42, shuffle=True),\n                       ensemble=False,\n                       estimator=Pipeline(steps=[('pre',\n                                                  ColumnTransformer(transformers=[('num',\n                                                                                   Pipeline(steps=[('impute',\n                                                                                                    SimpleImputer(strategy='median')),\n                                                                                                   ('scale',\n                                                                                                    StandardScaler())]),\n                                                                                   ['CreditScore',\n                                                                                    'Age',\n                                                                                    'Tenure',\n                                                                                    'Balance',\n                                                                                    'EstimatedSalary']),\n                                                                                  ('cat',\n                                                                                   Pipeline(steps=[('impute',\n                                                                                                    SimpleImputer(strategy='most_frequent')),\n                                                                                                   ('encode',\n                                                                                                    OneHotEncoder(handle_unknown='ignore',\n                                                                                                                  sparse_output=False))]),\n                                                                                   ['Geography',\n                                                                                    'NumOfProducts',\n                                                                                    'HasCrCard',\n                                                                                    'IsActiveMember'])])),\n                                                 ('model',\n                                                  RandomForestClassifier(max_depth=10,\n                                                                         min_samples_leaf=10,\n                                                                         n_estimators=300,\n                                                                         n_jobs=1,\n                                                                         random_state=42))]),\n                       n_jobs=1)"
+  },
+  "validation_scores_sha256": "2041d64093452b43c47c2c6704b3a4646491872b148dfbb9ee06a5eaa327b273",
+  "selection_rule": "famille AP validation, puis sigmoid si Brier améliore et perte AP <= 0.01",
+  "capacity": 0.2,
+  "validation_cutoff_descriptive": 0.31081871217197,
+  "target_policy": "quota top 20%, égalités pseudo-aléatoires graine 42, sans identifiant métier",
+  "business_rule": "2*(IsActiveMember==0) + 1*(Age>=45)",
+  "random_rule": "uniforme, graine 42 ; un tirage figé, pas le meilleur de plusieurs",
+  "strategies": [
+    "Aucun contact",
+    "Aléatoire",
+    "Métier",
+    "Prédictif"
+  ],
+  "economics": {
+    "hypothetical": true,
+    "economic_horizon_months": 12,
+    "label_horizon_verified": false,
+    "contact_cost_eur": 2,
+    "offer_cost_eur_all_contacts": 8,
+    "cost_eur": 10,
+    "margin_eur": 500,
+    "q": 0.2,
+    "effects": [
+      0,
+      0.1,
+      0.2,
+      0.4
+    ],
+    "margins": [
+      250,
+      500,
+      1000
+    ],
+    "costs": [
+      5,
+      10,
+      20
+    ]
+  },
+  "test_plan": "tous modèles figés, quatre stratégies, calibration du retenu ; bootstrap 1000 du retenu ; aucun choix sur test",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1"
+  }
+}

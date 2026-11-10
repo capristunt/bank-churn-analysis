@@ -1,0 +1,8 @@
+{
+  "n_train": 6000,
+  "positive_train": 1222,
+  "prevalence_train": 0.20366666666666666,
+  "zero_balance_train": 2182,
+  "source_split_sha256": "01e9ee41137f5d6e3f6f79805cd2cae02f4b90cd6d52459d950bd451671c48d2",
+  "scope": "associations rétrospectives sur train ; horizon inconnu"
+}
