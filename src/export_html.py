@@ -18,9 +18,9 @@ LEGACY_EXPORTS = ('index.html', '01-data-cleaning.html', '02-data-analysis.html'
 SECTIONS = [
     ('problem', '1. The business problem', 'Business problem'),
     ('data', '2. The data', 'Data'),
-    ('patterns', '3. What the customer base looks like', 'Customer patterns'),
-    ('model', '4. The model, in plain language', 'Model'),
-    ('decision', '5. From probability to decision', 'Targeting and economics'),
+    ('who', '3. Who leaves, and what is at stake', 'Who leaves'),
+    ('model', '4. The model: what it uses, and who it targets', 'The model'),
+    ('decision', '5. From risk to a campaign decision', 'Campaign decision'),
     ('actions', '6. What a retention team should do differently', 'Recommendations'),
     ('limits', '7. Limits and next steps', 'Limits and pilot'),
     ('evidence', 'Evidence and reproducibility', 'Evidence'),
@@ -95,7 +95,7 @@ def verify(html):
         else:
             assert href.startswith(('https://', 'http://')), f'Unexpected local page link: {href}'
     images = final.find_all('img')
-    assert len(images) == 3
+    assert len(images) == 5
     assert all(image.get('src', '').startswith('data:image/') for image in images)
     assert all(not tag.get('src', '').startswith(('http:', 'https:')) for tag in final.find_all(src=True))
     text = final.get_text(' ', strip=True)
@@ -107,7 +107,7 @@ def verify(html):
             for row in csv.DictReader(source):
                 identifier = row.get('CustomerId', '')
                 assert not identifier or identifier not in text, 'Individual data found in report'
-    for value in ['248', '407', '62%', '60.9%', '3.05', '0.857', '0.685', 'US$20,800', 'US$4,000']:
+    for value in ['248', '407', '62%', '60.9%', '3.05', '0.857', '0.685', 'US$20,800', 'US$4,000', 'US$26,700', '146', '+36']:
         assert value in text, f'Missing expected summary result: {value}'
     return final
 
@@ -138,13 +138,17 @@ def export():
             'class': 'table-scroll', 'tabindex': '0', 'role': 'region',
             'aria-label': 'Horizontally scrollable table'}))
     descriptions = [
-        'Training departure-label rates by activity and age band, with sample sizes and 95% Wilson intervals.',
-        'Departure labels targeted by the frozen no-contact, random, business and predictive strategies.',
-        'Simulated net gain across the frozen assumptions for retention effect, including no effect.',
+        'Churn proportion and share of all departures for the five overlapping training risk profiles, with sample sizes and 95% Wilson intervals.',
+        'Training churn proportion by membership activity and by age band, with sample sizes and 95% Wilson intervals.',
+        'Churners reached at equal capacity by the frozen test strategies and by the post hoc validation benchmark rules.',
+        'Simulated net gain by campaign size on validation, for four assumed retention effects, marking the 20% quota and the economic optimum.',
+        'Simulated net gain of each frozen strategy across assumed retention effects at fixed capacity, including the no-effect case.',
     ]
     captions = [
-        'Training associations do not establish causes or offer effectiveness.',
-        'Targeted departure labels are not customers successfully retained.',
+        'Training associations do not establish causes; profiles overlap, so shares do not sum to 100%.',
+        'Training associations, unadjusted for one another and not adjusted for multiple comparisons.',
+        'Churners reached are retrospective labels, not customers retained. The validation panel is a declared post hoc comparison.',
+        'Hypothetical economics on validation: the assumed retention effect q has never been measured.',
         'Hypothetical economic scenarios, not measured gains or a validated forecast.',
     ]
     images = list(content.find_all('img'))

@@ -38,6 +38,10 @@ LABELS = {
  'Rappel':'Recall','Coût hypothétique (USD)':'Hypothetical cost (USD)',
  'Labels ciblés':'Labels targeted','Départs évités supposés':'Assumed departures prevented',
  'Coût scénario (USD)':'Scenario cost (USD)','Gain net scénario (USD)':'Scenario net gain (USD)',
+ 'profil':'Profile','part_des_departs':'Share of all departures','solde_moyen':'Mean balance',
+ 'solde_moyen_contactes':'Mean balance contacted','tranche_age':'Age band','actif':'Active member',
+ 'perte_ap_moyenne':'Mean average-precision loss','ecart_type':'Standard deviation',
+ 'Règle EDA':'EDA-informed rule','Prédictif pondéré par le solde':'Balance-weighted predictive',
  'q au point mort':'Break-even q','Fraction supposée de départs évités q':'Assumed fraction of departures prevented q',
 }
 
@@ -88,14 +92,16 @@ def segment_rate_figure(segments, variables, overall_rate, *, title):
         'IsActiveMember': ['1', '0'],
         'ZeroBalance': ['Solde nul', 'Solde positif'],
         'AgeBand': ['18–34', '35–44', '45–54', '55+'],
+        'AgeBandFine': ['18–34', '35–44', '45–54', '55–64', '65+'],
         'NumOfProducts': ['1', '2', '3', '4'],
     }
     titles = {'Geography': 'Country', 'Gender': 'Gender',
               'IsActiveMember': 'Membership activity', 'ZeroBalance': 'Account balance',
+              'AgeBandFine': 'Age group (years)',
               'AgeBand': 'Age group (years)', 'NumOfProducts': 'Number of products'}
     names = {'IsActiveMember': {'1': 'Active', '0': 'Inactive'},
              'ZeroBalance': {'Solde nul': 'Zero balance', 'Solde positif': 'Positive balance'}}
-    ordered = {'AgeBand', 'NumOfProducts'}
+    ordered = {'AgeBand', 'AgeBandFine', 'NumOfProducts'}
     nominal = segments[segments.variable.isin([v for v in variables if v not in ordered])]
     nominal_limit = min(1.08, max(.3, math.ceil((nominal.ic95_haut.max() + .08) * 10) / 10)) if len(nominal) else 1
     ncols = min(2, len(variables))
