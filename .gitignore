@@ -1,0 +1,64 @@
+# Agent instructions, assistants and internal working material
+AGENTS.md
+AGENTS*.md
+CLAUDE.md
+GEMINI.md
+COPILOT.md
+.agent/
+.agents/
+.codex/
+.claude/
+.cursor/
+.windsurf/
+.aider*
+.cursorrules
+.cursorignore
+.github/copilot-instructions.md
+prompts/
+plans/
+reports/review.md
+reports/publication.md
+
+# Python environments, bytecode and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.aws/
+.ssh/
+credentials.json
+secrets.*
+
+# Customer-level data: never redistribute in the public repository
+data/raw/
+data/processed/customers.csv
+data/processed/splits.csv
+
+# Editors, operating system and temporary working files
+.idea/
+.vscode/
+.DS_Store
+.AppleDouble
+Thumbs.db
+*.swp
+*.swo
+*~
+*.log
+*.tmp
+*.bundle
