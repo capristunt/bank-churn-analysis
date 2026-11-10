@@ -1,0 +1,29 @@
+{
+  "raw_sha256": "3996cd1fa372e0db0cd9c0ebac35bbd4e8e3c65fb942bb010c826e7b1eeef0a0",
+  "split_sha256": "01e9ee41137f5d6e3f6f79805cd2cae02f4b90cd6d52459d950bd451671c48d2",
+  "seed": 42,
+  "target": "Exited",
+  "positive_class": 1,
+  "definition": "fermeture de compte / départ, convention pédagogique documentée par concordance Microsoft Learn",
+  "operationally_validated": false,
+  "horizon": null,
+  "decision_date": null,
+  "source_documentation": "https://learn.microsoft.com/en-us/fabric/data-science/customer-churn",
+  "source_access_date": "2026-11-09",
+  "row_unit": "client unique dans le fichier",
+  "feature_timing_verified": false,
+  "quality": {
+    "lignes": 10000,
+    "colonnes": 14,
+    "manquants": 0,
+    "doublons_exacts": 0,
+    "clients_repetes": 0,
+    "numeros_repetes": 0
+  },
+  "excluded_predictors": [
+    "RowNumber",
+    "CustomerId",
+    "Surname",
+    "observation_id"
+  ]
+}
