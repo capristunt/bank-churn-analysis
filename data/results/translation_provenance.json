@@ -2,15 +2,14 @@
   "purpose": "English presentation-only edition requested by the user; no scientific choices, data, sealed protocol or test results changed",
   "original_pretest_code_sha256": "f97d1b7746ae71294057eb97159d1d70750e7d40a067397c15c8573bb583f924",
   "english_pretest_code_sha256": "4738a9168db1a42da0c9e9d3258a9096e8b275297f2593ede31b6e83501ee177",
-  "presentation_sha256": "2fcba305f62b852d7027ad6901af3e9d986ff27625adf0cd7d2e07fb14a9e66c",
+  "presentation_sha256": "3473b09f1febee31a8a1e36bb00c6d0cb12d9880ab2b020eba1de6cb4afa5de3",
   "english_notebook_code_sha256": {
     "01-data-cleaning.ipynb": "d28e12432b7c95a4ac749ee8e43cab38b5e6a2652bf9b6ddca4fc19545d49210",
-    "02-data-analysis.ipynb": "b3b6f700ae7063ed2570683e3f22ec7a9c5453216abe9ff1aa60c4c3fd291952",
+    "02-data-analysis.ipynb": "3a15fbca4b3e34cdda279233a17825d66093da3320c98965ed9d77328a90f038",
     "03-prediction.ipynb": "6d5a7c08105cfa28cc2a2c0ce0477bdefc844eabf6277ca5f44edd640bd04dc8",
-    "04-business-insights.ipynb": "d42f9cc1ddd43f083b2b34e9b57c06ba5cbc9dfc1813dcdb12430b411f34018b"
+    "04-business-insights.ipynb": "8f3db6a88dc909213f129bbc6e129a19c7e153223eeb37afae90fcba3a3bc502"
   },
   "original_artifact_sha256": {
-    "data/.DS_Store": "8c005b6d838754ba9469732805cd46d350299cbaa8deeff4d67bc2d1353bcd04",
     "data/results/eda_summary.json": "9cdb7bfae0d992ff2a55011c2abced720266f72b518fad66adda70e18812ac2a",
     "data/results/segments_train.csv": "0cf4c7e93564bf67f395b44a329c045fc1b1e67117497d03cad9099a0e6dfe58",
     "data/results/test_evaluation.json": "8ddb6a190e67f13b4895e298206842218c03052747c1cfd2e09a9138baf284f4",
@@ -34,6 +33,33 @@
         "04-business-insights.ipynb": "edb6d906676290732c20c8079a78e58ac49dfdfa08beafc8d9b5aec0b605101c"
       },
       "scope": "Presentation only. Segment calculations, data, splits, models, frozen scientific protocol and test results are unchanged."
+    },
+    {
+      "date": "2026-11-10",
+      "reason": "User-requested USD denomination for hypothetical economic and pilot-planning amounts; unchanged numeric assumptions, no foreign-exchange conversion.",
+      "previous_presentation_sha256": "2fcba305f62b852d7027ad6901af3e9d986ff27625adf0cd7d2e07fb14a9e66c",
+      "previous_notebook_code_sha256": {
+        "01-data-cleaning.ipynb": "d28e12432b7c95a4ac749ee8e43cab38b5e6a2652bf9b6ddca4fc19545d49210",
+        "02-data-analysis.ipynb": "b3b6f700ae7063ed2570683e3f22ec7a9c5453216abe9ff1aa60c4c3fd291952",
+        "03-prediction.ipynb": "6d5a7c08105cfa28cc2a2c0ce0477bdefc844eabf6277ca5f44edd640bd04dc8",
+        "04-business-insights.ipynb": "d42f9cc1ddd43f083b2b34e9b57c06ba5cbc9dfc1813dcdb12430b411f34018b"
+      },
+      "scope": "Presentation only. The sealed protocol, cached test results, targeting choices and numeric data are unchanged.",
+      "excluded_local_metadata": {
+        "data/.DS_Store": "8c005b6d838754ba9469732805cd46d350299cbaa8deeff4d67bc2d1353bcd04"
+      },
+      "metadata_exclusion_reason": "Finder .DS_Store files are operating-system metadata, not study evidence. A pre-existing Finder update changed this ignored file; it is no longer a scientific reproducibility prerequisite."
     }
-  ]
+  ],
+  "currency_presentation": {
+    "code": "USD",
+    "symbol": "US$",
+    "numeric_values_changed": false,
+    "exchange_rate": null,
+    "applies_to": "Hypothetical economic scenarios and proposed pilot-planning amounts only",
+    "introduced_after_original_evaluation": true,
+    "historical_eur_fields_unchanged": true,
+    "source_data_currency_verified": false,
+    "scope": "Explicit scenario re-denomination requested by the user; not a foreign-exchange conversion and not measured campaign profitability."
+  }
 }
